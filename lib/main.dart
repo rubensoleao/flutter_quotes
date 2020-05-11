@@ -30,7 +30,15 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
+        children: quotes.map((quote) => QuoteCard(
+          quote: quote,
+          deleteFun: () {
+            setState((){
+              //Don't need to pass quotes because it's in func
+              quotes.remove(quote);
+            });
+          }
+        )).toList(),
       )
     );
   }
